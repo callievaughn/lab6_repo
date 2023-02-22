@@ -68,7 +68,7 @@ const DurationExercise = () => {
                 setTimed(0)
             }}>Reset</button>
             <p style={{fontSize:".6em"}}>
-                Increments .01 miles every 5 seconds for an average of a 8:30 minute mile.</p>
+                Incrementing .01 miles every 5 seconds based on users speed for an average of a 8:30 minute mile.</p>
         </div>
     ) 
 }
