@@ -1,8 +1,6 @@
 //import React, { useCallback, useEffect, useState } from "react";
 
 export default function DurationExercise() {
-
-
     return (
         <div>
         <p>Running</p>
