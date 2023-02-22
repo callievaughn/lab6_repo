@@ -1,10 +1,15 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
+//for timer
 let currentTimer = 0
+//for mileage counter
 let currentMiles = 0 
+
 const DurationExercise = () => {
 
+    // used screenshot from professor Murray on canvas
     // stopwatch/timer implementation
+
     let [running, setRunning] = useState(false)
     let [timer, setTimer] = useState(0)
     let updateTimer = useCallback(()=> {
@@ -15,7 +20,6 @@ const DurationExercise = () => {
     useEffect(()=> {
         currentTimer= setInterval(updateTimer, 10)
         return () => clearInterval(currentTimer)
-        //console.log (timer)
     },[running])
     let startStop = useCallback(()=> {
         setRunning(!running)
@@ -26,6 +30,7 @@ const DurationExercise = () => {
     let secs = (Math.floor((timer / 1000) % 60)).toString().padStart(2, "0")
     
     //my mileage implementation
+    //my added app feature counted the miles of the runner
 
     let [miles, setMiles] = useState(false)
     let [timed, setTimed] = useState(0)
@@ -47,6 +52,7 @@ const DurationExercise = () => {
     let pointMile = (Math.floor((timed / 1000) % 60)).toString().padStart(2, "0", "0")
    
     return (
+ 
         <div style={{margin: "auto"}}>
             <p>Running</p>
             <p>Timer: {mins}:{secs}</p>
@@ -54,7 +60,6 @@ const DurationExercise = () => {
             <button onClick={()=> {
                 setTimer(0)
             }}>Reset</button>
-
 
             <p>Current Mileage: {mile}.{pointMile} miles </p>
             <button onClick={startPause}>{miles ? "Pause" : "Start"}</button>
