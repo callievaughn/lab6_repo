@@ -54,7 +54,7 @@ const DurationExercise = () => {
    
     return (
  
-        <div style={{margin: "auto"}}>
+        <div>
             <p>Running</p>
             <p>Timer: {mins}:{secs}</p>
             <button onClick={startStop}>{running ? "Pause" : "Start"}</button>
