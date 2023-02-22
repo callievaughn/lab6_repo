@@ -2,8 +2,9 @@ import React, { useCallback, useEffect, useState } from 'react';
 
 let currentTimer = 0
 let currentMiles = 0 
-const Stopwatch = () => {
-    // timer
+const DurationExercise = () => {
+
+    // stopwatch/timer implementation
     let [running, setRunning] = useState(false)
     let [timer, setTimer] = useState(0)
     let updateTimer = useCallback(()=> {
@@ -15,38 +16,33 @@ const Stopwatch = () => {
         currentTimer= setInterval(updateTimer, 10)
         return () => clearInterval(currentTimer)
         //console.log (timer)
-    }, [running])
+    },[running])
     let startStop = useCallback(()=> {
         setRunning(!running)
         clearInterval(currentTimer)
     }, [running])
-    let reset = useCallback(()=> {
-        setTimer(0)
-    })
+    
     let mins = (Math.floor((timer / (1000*60)) % 60)).toString().padStart(2, "0")
     let secs = (Math.floor((timer / 1000) % 60)).toString().padStart(2, "0")
     
-    //mileage
+    //my mileage implementation
 
     let [miles, setMiles] = useState(false)
     let [timed, setTimed] = useState(0)
-    let updateTimed = useCallback(()=> {
+    let updatedMileage = useCallback(()=> {
         if (miles) {
             setTimed((timed)=> timed+10)
         }
     }, [miles])
     useEffect(()=> {
-        currentMiles= setInterval(updateTimed, 50)
+        currentMiles= setInterval(updatedMileage, 50)
         return () => clearInterval(currentMiles)
-        //console.log (timer)
-    }, [miles])
+    }, [miles] )
     let startPause = useCallback(()=> {
         setMiles(!miles)
         clearInterval(currentMiles)
     }, [miles])
-    let resetMiles = useCallback(()=> {
-        setTimed(0)
-    })
+
     let mile = (Math.floor((timed / (1000*60)) % 60)).toString().padStart(2, "0")
     let pointMile = (Math.floor((timed / 1000) % 60)).toString().padStart(2, "0", "0")
    
@@ -65,8 +61,9 @@ const Stopwatch = () => {
             <button onClick={()=> {
                 setTimed(0)
             }}>Reset</button>
-            <p style={{fontSize:".5em"}}>Running .01 miles every 5 seconds for an average of a 8:30 minute mile.</p>
+            <p style={{fontSize:".6em"}}>
+                Increments .01 miles every 5 seconds for an average of a 8:30 minute mile.</p>
         </div>
     ) 
 }
-export default Stopwatch
+export default DurationExercise
