@@ -30,6 +30,7 @@ const DurationExercise = () => {
     let secs = (Math.floor((timer / 1000) % 60)).toString().padStart(2, "0")
     
     //my mileage implementation
+    //updated the timer implementation to count mileage
     //my added app feature counted the miles of the runner
 
     let [miles, setMiles] = useState(false)
